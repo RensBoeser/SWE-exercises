@@ -246,21 +246,21 @@ const mt_if = <s, a>(c: StFail<s, boolean>, t: StFail<s, a>, e: StFail<s, a>): S
 type Memory = Immutable.Map<string, number>
 type FakeThread<a> = StFail<Memory, a>
 
-const get_var = (v: string): FakeThread<number> =>
-	get_st_fail<Memory>().then(m =>
-		m.has(v) ? unit_StFail(m.get(v))
-			: fail_StFail<Memory, number>()
-	)
+// const get_var = (v: string): FakeThread<number> =>
+// 	get_st_fail<Memory>().then(m =>
+// 		m.has(v) ? unit_StFail(m.get(v))
+// 			: fail_StFail<Memory, number>()
+// 	)
 
-const set_var = (v: string, e: number): FakeThread<Unit> =>
-	get_st_fail<Memory>().then(m =>
-		set_st_fail<Memory>(m.set(v, e)))
+// const set_var = (v: string, e: number): FakeThread<Unit> =>
+// 	get_st_fail<Memory>().then(m =>
+// 		set_st_fail<Memory>(m.set(v, e)))
 
-const swap_a_b: FakeThread<number> =
-	together(get_var("a"), get_var("b")).then(({ a: a_v, b: b_v }) =>
-		together(set_var("a", b_v), set_var("b", a_v)).then(_ =>
-			unit_StFail(a_v + b_v)
-		))
+// const swap_a_b: FakeThread<number> =
+// 	together(get_var("a"), get_var("b")).then(({ a: a_v, b: b_v }) =>
+// 		together(set_var("a", b_v), set_var("b", a_v)).then(_ =>
+// 			unit_StFail(a_v + b_v)
+// 		))
 
 const initial_memory = Immutable.Map<string, number>([["a", 1], ["b", 2]])
 

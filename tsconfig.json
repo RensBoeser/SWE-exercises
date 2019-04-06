@@ -6,9 +6,6 @@
     "rootDir": "./src/",
     "strict": true,
     "baseUrl": ".",
-    "esModuleInterop": true,
-    "paths": {
-      "lib/*": ["src/lib/*"]
-    }
+    "esModuleInterop": true
   }
 }

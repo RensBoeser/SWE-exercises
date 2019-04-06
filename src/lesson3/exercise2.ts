@@ -1,6 +1,8 @@
 import fun, {Fun} from "../types/fun"
-import pair, {Pair} from "../types/pair"
-import {List, some, none} from "../types/list"
+import {Pair} from "../types/pair"
+import {List, none} from "../types/list"
+import {ListMonoid} from "../types/monoid"
+import {Unit} from "../types/unit"
 
 // Define strings in terms of the string monoid, characterized by:
 
@@ -15,14 +17,7 @@ import {List, some, none} from "../types/list"
 // the identity law: `plus(zero({}), x) = plus(x, zero({})) = x`;
 // the associative law: `plus({ fst:a, snd:plus({fst:b, snd:c})}) = plus({ fst:plus({ fst:a, snd:b }), snd:c })`.
 
-type Unit = {}
-
-interface ListMonoid {
-	zero: <a>() => Fun<Unit, List<a>>
-	plus: <a>() => Fun<Pair<List<a>, List<a>>, List<a>>
-}
-
-const listMonoid: ListMonoid = ({
+export const listMonoid: ListMonoid = ({
 	zero: <a>(): Fun<Unit, List<a>> => fun(({}) => none<a>()),
-	plus: <a>(): Fun<Pair<List<a>, List<a>>, List<a>> => null!
+	plus: <a>(): Fun<Pair<List<a>, List<a>>, List<a>> => fun(ls => ls.left.concat(ls.right))
 })

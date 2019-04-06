@@ -9,14 +9,16 @@ export type List<a> = ({
 })
 & {
 	map: <b>(f: Fun<a, b>) => List<b>
-	join: (l: List<a>) => List<a>
+	join: () => List<a>
 	encode: (shift: number) => List<string>
+	concat: (l: List<a>) => List<a>
 }
 
 const functions = <a>() => ({
-	map<b>(this: List<a>, f: Fun<a, b>): List<b> { return mapList(this, f) },
-	join(this: List<a>, l: List<a>): List<a> { return joinList(this, l) },
-	encode(this: List<string>, shift: number): List<string> { return encode().f(shift).f(this) }
+	map<b>(this: List<a>, f: Fun<a, b>): List<b> { return fun<List<a>, List<b>>(l => mapList(l, f)).f(this) },
+	join(this: List<List<a>>): List<a> { return joinList(this) },
+	encode(this: List<string>, shift: number): List<string> { return encode().f(shift).f(this) },
+	concat(this: List<a>, l: List<a>): List<a> { return joinList(some(this, some(l, none()))) }
 })
 
 export const some = <a>(head: a, tail: List<a>): List<a> => ({
@@ -34,11 +36,14 @@ export const none = <a>(): List<a> => ({
 const mapList = <a, b>(l: List<a>, f: Fun<a, b>): List<b> =>
 	l.kind === "Empty" ? none<b>() : some(f.f(l.head), mapList(l.tail, f))
 
-const joinList = <a>(l1: List<a>, l2: List<a>): List<a> => l1.kind === "Empty"
-	? (l2.kind === "Empty"
-		? none()
-		: some(l2.head, joinList(l1, l2.tail)))
-	: some(l1.head, joinList(l1.tail, l2))
+const joinList = <a>(l: List<List<a>>): List<a> => l.kind === "Empty"
+	? none()
+	: l.head.kind === "Empty"
+	? joinList(l.tail)
+	// : concatList(l.head, joinList(l.tail))
+	: joinList(some(l.head, some(joinList(l.tail), none())))
+
+// const concatList = <a>(l1: List<a>, l2: List<a>): List<a> => joinList(some(l1, some(l2, none())))
 
 const encode = (): Fun<number, Fun<List<string>, List<string>>> => {
 	return fun(shift =>
