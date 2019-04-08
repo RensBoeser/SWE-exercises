@@ -5,14 +5,14 @@
   "main": "./src/index.ts",
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
-    "tslint": "^5.13.0",
-    "typescript": "^3.3.3333"
+    "tslint": "^5.15.0",
+    "typescript": "^3.4.2"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
     "chai": "^4.2.0",
-    "mocha": "^6.0.2",
+    "mocha": "^6.1.1",
     "ts-node": "^8.0.3"
   },
   "scripts": {
