@@ -1,6 +1,6 @@
-import fun, {Fun} from "../functor/fun"
+import fun, {Fun} from "./fun"
 import pair, {Pair} from "../functor/pair"
-import id from "../functor/identity"
+import id from "./identity"
 import unit, {Unit} from "../object/unit"
 
 export type State<s, a> = Fun<s, Pair<a, s>>

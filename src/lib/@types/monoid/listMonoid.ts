@@ -1,4 +1,4 @@
-import fun, {Fun} from "../functor/fun"
+import fun, {Fun} from "../monad/fun"
 import pair, {Pair} from "../functor/pair"
 import {some, none, List, concatList} from "../monad/list"
 import absoluteUnit, {Unit} from "../object/unit"

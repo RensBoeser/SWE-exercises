@@ -1,6 +1,6 @@
 // Implement an Exception Functor Exception<a> where its data structure is defined with a discriminate union made of Result and Error.
 // Result contains an element of type a while Error contains a string reporting an error message.
-import fun, {Fun} from "../functor/fun"
+import fun, {Fun} from "./fun"
 
 type Exception<a> = {
 	kind: "result"

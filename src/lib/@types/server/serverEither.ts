@@ -1,5 +1,5 @@
 import {Exception, unitException, unitExceptionNone} from "../monad/exceptionEither"
-import fun, {Fun} from "../functor/fun"
+import fun, {Fun} from "../monad/fun"
 
 interface ServerConnection {
 	ip: string

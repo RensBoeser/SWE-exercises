@@ -1,4 +1,4 @@
-import fun, {Fun} from "../functor/fun"
+import fun, {Fun} from "./fun"
 import unit, {Unit} from "../object/unit"
 
 export type List<a> = {

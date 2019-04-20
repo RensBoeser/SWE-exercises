@@ -1,5 +1,5 @@
-import fun, {Fun} from "./fun"
-import id, {Id} from "./identity"
+import fun, {Fun} from "../monad/fun"
+import id, {Id} from "../monad/identity"
 
 export type Pair<a, b> = {
 	left: a

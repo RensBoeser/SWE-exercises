@@ -1,5 +1,5 @@
 import {Option, some, none} from "../monad/option"
-import fun, {Fun} from "../functor/fun"
+import fun, {Fun} from "../monad/fun"
 
 interface ServerConnection {
 	ip: string

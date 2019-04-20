@@ -1,4 +1,4 @@
-import fun, {Fun} from "../functor/fun"
+import fun, {Fun} from "../monad/fun"
 import {some, none, Option, joinOption} from "../monad/option"
 import absoluteUnit from "../object/unit"
 

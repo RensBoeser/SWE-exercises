@@ -1,6 +1,6 @@
-import {Fun} from "../functor/fun"
+import {Fun} from "./fun"
 import {Either, mapEither, joinEither, unitEither, bindEither, unitEitherLeft} from "./either"
-import id from "../functor/identity"
+import id from "./identity"
 
 export type Exception<a> = Either<string, a>
 
