@@ -1,5 +1,5 @@
-import fun, {Fun} from "./fun"
-import id from "./identity"
+import fun, {Fun} from "../fun"
+import id from "../identity"
 
 export type Either<a, b> = ({
 	kind: "left"

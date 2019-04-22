@@ -1,7 +1,7 @@
-import fun, {Fun} from "../monad/fun"
-import pair, {Pair} from "../functor/pair"
-import {some, none, List, concatList} from "../monad/list"
-import absoluteUnit, {Unit} from "../object/unit"
+import fun, {Fun} from "../fun"
+import pair, {Pair} from "../pair/pair"
+import {some, none, List, concatList} from "../iterable/list"
+import absoluteUnit, {Unit} from "../unit"
 
 const zero = <a>(): Fun<Unit, List<a>> => fun(_ => none<a>().f(absoluteUnit))
 const plus = <a>(): Fun<Pair<List<a>, List<a>>, List<a>> => fun<Pair<List<a>, List<a>>, List<a>>(p => concatList<a>().f(p.left).f(p.right))
@@ -11,5 +11,5 @@ const join = <a>(): Fun<List<List<a>>, List<a>> => fun(l =>
 	? none<a>().f(absoluteUnit)
 	: l.head.kind === "none"
 	? join<a>().f(l.tail)
-	: plus<a>().f(pair<List<a>, List<a>>().f(l.head).f(join<a>().f(l.tail)))
+	: plus<a>().f(pair<List<a>, List<a>>(l.head, join<a>().f(l.tail)))
 )

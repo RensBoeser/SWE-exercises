@@ -1,7 +1,7 @@
-import {Fun} from "./fun"
+import {Fun} from "../fun"
 import {Either, mapEither, joinEither, unitEither, unitEitherLeft, bindEither} from "./either"
-import {Unit} from "../object/unit"
-import id from "./identity"
+import {Unit} from "../unit"
+import id from "../identity"
 
 export type Option<a> = Either<Unit, a>
 

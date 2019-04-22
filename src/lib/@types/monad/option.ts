@@ -1,5 +1,5 @@
-import fun, {Fun} from "./fun"
-import unit, {Unit} from "../object/unit"
+import fun, {Fun} from "../fun"
+import unit, {Unit} from "../unit"
 
 export type Option<a> = ({
 	kind: "some",

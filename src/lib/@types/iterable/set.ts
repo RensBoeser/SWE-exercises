@@ -1,4 +1,4 @@
-import fun, {Fun} from "./fun"
+import fun, {Fun} from "../fun"
 
 // functorial structure: map
 export const setMap = <a, b>(): Fun<Fun<a, b>, Fun<Set<a>, Set<b>>> =>

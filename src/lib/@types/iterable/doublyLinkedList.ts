@@ -1,4 +1,4 @@
-import fun, {Fun} from "./fun"
+import fun, {Fun} from "../fun"
 
 export type DoublyLinkedList<a> = {
 	kind: "none"
